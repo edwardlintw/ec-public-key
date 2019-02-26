@@ -13,7 +13,7 @@ public class App
 {
     public static void main( String[] args )
     {
-    	Security.addProvider(new BouncyCastlePQCProvider());
+    	Security.addProvider(new BouncyCastleProvider());
     	if (0 == args.length)
         System.out.println("Hello World!");
     	else {
