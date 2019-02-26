@@ -67,26 +67,38 @@
     
   </dependencies>
 
-  <build>
+<build>
     <plugins>
-      <plugin>
-	       <artifactId>maven-release-plugin</artifactId>
-        <version>3.1</version>
-	         <configuration>
-	                 <archive>
-          <manifest>
-            <addClasspath>true</addClasspath>
-            <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>com.anue.App</mainClass>
-          </manifest>
-        </archive>
-	         
-              <source>1.8</source>
-              <target>1.8</target>
-	         </configuration>
-      </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>com.anue.App</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>2.3</version>
+            <configuration>
+                <createDependencyReducedPom>false</createDependencyReducedPom>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
     </plugins>
-  </build>
+</build>
 
 <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
